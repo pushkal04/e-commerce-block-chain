@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {FiRefreshCcw} from 'react-icons/fi'
 //import Web3 from 'web3'
 import './App.css';
 import * as Utils from 'web3-utils';
@@ -10,7 +11,6 @@ class Main extends Component {
             <div id="content">
                 <h1>Add Product</h1>
                 <form onSubmit = {(event) => { 
-                    event.preventDefault()
                     const name = this.productName.value
                     const price = Utils.toWei(this.productPrice.value.toString(), 'Ether')
                     this.props.createProduct(name, price)
@@ -21,7 +21,10 @@ class Main extends Component {
                     <div className="form-group mr-sm-2">
                         <input id="productPrice" type="text" ref={(input) => {this.productPrice = input}} placeholder="Product Price" className="form-control" required />
                     </div>
-                    <button type = "submit" className = "btn btn-primary">Add Product</button>
+                    <div className="d-flex justify-content-between">
+                    <button type = "submit" className = "btn btn-primary ">Add Product</button>
+                    <button onClick={() => window.location.reload(false)}  className = "btn btn-outline-primary "><FiRefreshCcw/></button>
+                    </div>
                 </form>
                 <p>&nbsp;</p>
                 <h2>Buy Products</h2>
